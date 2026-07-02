@@ -1,5 +1,8 @@
-from pydantic import BaseModel, ConfigDict, EmailStr
+from typing import Optional
+
+from pydantic import BaseModel, ConfigDict, EmailStr, conint
 from datetime import datetime 
+
 
 
 class PostBase(BaseModel):
@@ -13,6 +16,14 @@ class PostCreate(PostBase):
 class Post(PostBase):
     id:int
     created_at:datetime
+    owner_id:int
+    owner: UserOut # Use forward reference for UserOut
+
+    model_config = ConfigDict(from_attributes=True)
+
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
 
     model_config = ConfigDict(from_attributes=True)
     
@@ -26,3 +37,18 @@ class UserOut(BaseModel):
    created_at:datetime
 
    model_config = ConfigDict(from_attributes=True)
+
+class UserLogin(BaseModel):
+    email:EmailStr
+    password:str
+
+class Token(BaseModel):
+    access_token:str
+    token_type:str
+
+class TokenData(BaseModel):
+    id: Optional[int] = None
+
+class Vote(BaseModel):
+    post_id: int
+    dir: conint(le=1)  # Ensure dir is an integer less than or equal to 1
