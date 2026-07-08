@@ -1,4 +1,4 @@
-# FastAPI Nashon Backend
+# SocialMedia FastAPI Backend
 
 ## Overview
 
