@@ -17,7 +17,7 @@ class Post(PostBase):
     id:int
     created_at:datetime
     owner_id:int
-    owner: UserOut # Use forward reference for UserOut
+    owner: "UserOut" # Use forward reference for UserOut
 
     model_config = ConfigDict(from_attributes=True)
 
