@@ -1,6 +1,8 @@
-name:Build and Deploy FastAPI
-on:[push,pull_request]
-  
+name: Build and Deploy FastAPI
+on:
+  push:
+  pull_request:
+
 jobs:
   job1:
     runs-on: ubuntu-latest
