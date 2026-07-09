@@ -5,6 +5,17 @@ on:
 
 jobs:
   job1:
+   environment:
+    name:FastApi
+   env:
+      POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+      POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+      POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+      POSTGRES_HOST: ${{secrets.POSTGRES_HOST}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      POSTGRES_PORT: ${{secrets.POSTGRES_PORT}} 
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
