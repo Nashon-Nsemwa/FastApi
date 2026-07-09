@@ -9,5 +9,12 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v3
-      - name: say hi
-        run: echo "Hello Nashon first repo"
+      - name: install python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: update pip
+        run: python -m pip install --upgrade pip
+      - name: install dependencies
+        run: pip install -r requirements.txt
+       
